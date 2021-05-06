@@ -1,13 +1,34 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import Camera from './pages/Camera';
+import DailyInspiration from './pages/DailyInspiration';
+import Explore from './pages/Explore';
+import LogIn from './pages/LogIn';
+import SaveAndShare from './pages/SaveAndShare';
+import SelectClothing from './pages/SelectClothing';
+import StartSelecting from './pages/StartSelecting';
 
 export default function App() {
+  let [page, setPage] = useState("logIn")
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <>
+{page==="logIn" && <LogIn/>
+}
+{page==="camera" && <Camera/>
+}
+{page==="dailyInspiration" && <DailyInspiration/>
+}
+{page==="explore" && <Explore/>
+}
+{page==="saveAndShare" && <SaveAndShare/>
+}
+{page==="selectClothing" && <SelectClothing/>
+}
+{page==="startSelecting" && <StartSelecting/>
+}
+    </>
   );
 }
 
