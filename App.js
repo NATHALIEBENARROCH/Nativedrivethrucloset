@@ -14,7 +14,7 @@ export default function App() {
 
   return (
     <>
-{page==="logIn" && <LogIn/>
+{page==="logIn" && <LogIn nextpage={()=>{setPage("dailyInspiration")}}/>
 }
 {page==="camera" && <Camera/>
 }
