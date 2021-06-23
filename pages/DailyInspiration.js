@@ -2,6 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import moment from 'moment';
 import React, {useState, useEffect} from 'react';
 import {SafeAreaView, StyleSheet, View, Text, ScrollView, TouchableOpacity} from 'react-native';
+import Menu from './Menu';
 
 export default function DailyInspiration() {
 var date = new Date().getDate(); //To get the Current Date
@@ -37,7 +38,7 @@ return (
 <View style={styles.header}>
 
 <View style={styles.logoutbuttonsection}>
-<TouchableOpacity onPress={()=>{nextpage()}} style ={styles.TouchableOpacity}>
+<TouchableOpacity onPress={()=>{nextpage()}} style ={styles.Logoutbtn}>
 <Text style={styles.login}>Log Out</Text>
 </TouchableOpacity>
 </View>
@@ -50,21 +51,34 @@ return (
 </View>
 
 <ScrollView style={styles.scrollsection}>
-<View style={styles.bordercards}><Text style={styles.clothingcat}>Clothing Card</Text></View>
-<View style={styles.bordercards}><Text style={styles.clothingcat}>Clothing Card</Text></View>
-<View style={styles.bordercards}><Text style={styles.clothingcat}>Clothing Card</Text></View>
-<View style={styles.bordercards}><Text style={styles.clothingcat}>Clothing Card</Text></View>
-<View style={styles.bordercards}><Text style={styles.clothingcat}>Clothing Card</Text></View>
-<View style={styles.bordercards}><Text style={styles.clothingcat}>Clothing Card</Text></View>
-<View style={styles.bordercards}><Text style={styles.clothingcat}>Clothing Card</Text></View>
-<View style={styles.bordercards}><Text style={styles.clothingcat}>Clothing Card</Text></View>
-<View style={styles.bordercards}><Text style={styles.clothingcat}>Clothing Card</Text></View>
-<View style={styles.bordercards}><Text style={styles.clothingcat}>Clothing Card</Text></View>
-<View style={styles.bordercards}><Text style={styles.clothingcat}>Clothing Card</Text></View>
-<View style={styles.bordercards}><Text style={styles.clothingcat}>Clothing Card</Text></View>
-<View style={styles.bordercards}><Text style={styles.clothingcat}>Clothing Card</Text></View>
-<View style={styles.bordercards}><Text style={styles.clothingcat}>Clothing Card</Text></View>
+
+<View style={styles.bordercards}><Text style={styles.clothingcat}>Clothing Card</Text><TouchableOpacity onPress={()=>{alert("link")}}>
+<Text style={styles.link}>Link 2</Text>
+</TouchableOpacity></View>
+
+<View style={styles.bordercards}><Text style={styles.clothingcat}>Clothing Card</Text><TouchableOpacity onPress={()=>{alert("link")}}>
+<Text style={styles.link}>Link 2</Text>
+</TouchableOpacity></View>
+
+<View style={styles.bordercards}><Text style={styles.clothingcat}>Clothing Card</Text><TouchableOpacity onPress={()=>{alert("link")}}>
+<Text style={styles.link}>Link 2</Text>
+</TouchableOpacity></View>
+
+<View style={styles.bordercards}><Text style={styles.clothingcat}>Clothing Card</Text><TouchableOpacity onPress={()=>{alert("link")}}>
+<Text style={styles.link}>Link 2</Text>
+</TouchableOpacity></View>
+
+<View style={styles.bordercards}><Text style={styles.clothingcat}>Clothing Card</Text><TouchableOpacity onPress={()=>{alert("link")}}>
+<Text style={styles.link}>Link 2</Text>
+</TouchableOpacity></View>
+
+<View style={styles.bordercards}><Text style={styles.clothingcat}>Clothing Card</Text><TouchableOpacity onPress={()=>{alert("link")}}>
+<Text style={styles.link}>Link 2</Text>
+</TouchableOpacity></View>
+
 </ScrollView>
+
+<Menu></Menu>
 </View>
 </>
 );
@@ -91,7 +105,7 @@ justifyContent: 'center',
 alignItems: 'flex-end',
 },
 
-TouchableOpacity: {
+Logoutbtn: {
 backgroundColor: 'black',
 borderRadius: 50,
 width: 45,
@@ -135,4 +149,10 @@ clothingcat: {
   fontSize: 30,
   fontWeight:'300',
   },
+  link: {
+    fontSize: 15,
+    fontWeight:'300',
+    color:"black",
+    textDecorationLine: 'underline',
+    },
 });

@@ -3,30 +3,30 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View, Image, Button, TouchableOpacity } from 'react-native';
 
 export default function LogIn({nextpage}) {
-  return (
-    <>
-  <View style={styles.container}>
+return (
+<>
+<View style={styles.container}>
 
-  <Image
-        style={styles.tinyLogo}
-        source={require('../assets/LOGOGV.png')}
-      />
-      <Text style={styles.slogan}>Let's go for a Fashionable Spin</Text>
+<Image
+style={styles.tinyLogo}
+source={require('../assets/LOGOGV.png')}
+/>
+<Text style={styles.slogan}>Let's go for a Fashionable Spin</Text>
 <View>
-      <TouchableOpacity onPress={()=>{nextpage()}} style ={styles.TouchableOpacity}>
- 
-        <Text style={styles.login}>Login</Text>
-      
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.TouchableOpacity2}>
- <Text style={styles.signup}>Create an account</Text>
+<TouchableOpacity onPress={()=>{nextpage()}} style ={styles.TouchableOpacity}>
+
+<Text style={styles.login}>Login</Text>
+
+</TouchableOpacity>
+<TouchableOpacity style={styles.TouchableOpacity2}>
+<Text style={styles.signup}>Create an account</Text>
 </TouchableOpacity>
 </View>
-      </View>
+</View>
 
 
-    </>
-  );
+</>
+);
 }
 
 const styles = StyleSheet.create({
