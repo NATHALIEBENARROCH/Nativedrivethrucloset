@@ -1,16 +1,47 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 
-export default function Menu() {
+export default function Menu({setPage}) {
   return (
    
   <View style={styles.bar}>
 
-     <Image
-style={styles.home}
-source={require('../assets/bar/GV HOME.png')}
+<TouchableOpacity onPress={()=>{setPage("dailyInspiration")}} style={styles.Logoutbtn}>
+<Image
+style={styles.menuitems}
+source={require('../assets/bar/LOGO.png')}
 />
+</TouchableOpacity>
+
+<TouchableOpacity onPress={()=>{setPage("startSelecting")}} style={styles.Logoutbtn}>
+<Image
+style={styles.menuitems}
+source={require('../assets/bar/LOGO.png')}
+/>
+</TouchableOpacity>
+
+<TouchableOpacity onPress={()=>{setPage("camera")}} style={styles.Logoutbtn}>
+<Image
+style={styles.menuitems}
+source={require('../assets/bar/PLUS.png')}
+/>
+</TouchableOpacity>
+
+<TouchableOpacity onPress={()=>{setPage("style")}} style={styles.Logoutbtn}>
+<Image
+style={styles.menuitems}
+source={require('../assets/bar/LOGO.png')}
+/>
+</TouchableOpacity>
+
+<TouchableOpacity onPress={()=>{setPage("saveAndShare")}} style={styles.Logoutbtn}>
+<Image
+style={styles.menuitems}
+source={require('../assets/bar/PROFILE.png')}
+/>
+</TouchableOpacity>
+
 
 </View>
   );
@@ -18,24 +49,24 @@ source={require('../assets/bar/GV HOME.png')}
 
 const styles = StyleSheet.create({
   bar: {
-    backgroundColor: 'red',
+    backgroundColor: 'black',
+    flexDirection:'row',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'space-around',
     position: 'absolute',
     bottom:20,
-    width: 250,
-    height: 250,
+    width: 380,
+    height: 60,
+    borderRadius: 15,
   
   },
 
-  home: {
+
+  menuitems: {
     alignItems: 'center',
     justifyContent: 'center',
-    position: 'absolute',
-    bottom:20,
-    width: 250,
-    height: 250,
+    width: 40,
+    height: 40,
     resizeMode: 'contain',
-  
   },
 });

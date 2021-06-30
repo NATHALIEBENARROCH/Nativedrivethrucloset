@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-export default function SelectClothing() {
+export default function Style() {
 return (
 <>
 <View style={styles.container}>
@@ -12,7 +12,7 @@ return (
 </TouchableOpacity>
 
 </View>
-  <Text>SelectClothing</Text>
+  <Text>Style</Text>
 </View>
 </>
 );
