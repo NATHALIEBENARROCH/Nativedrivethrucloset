@@ -18,17 +18,17 @@ export default function App() {
     <>
 {page==="logIn" && <LogIn nextpage={()=>{setPage("dailyInspiration")}}/>
 }
-{page==="camera" && <Camera/>
+{page==="camera" && <Camera setPage={setPage}/>
 }
 {page==="dailyInspiration" && <DailyInspiration setPage={setPage}/>
 
 // ABOVE IS PROP OR EXPORT THAT IS PASSED TO DAILY INSPIRATION COMPONENT
 }
-{page==="explore" && <Explore/>
+{page==="explore" && <Explore setPage={setPage}/>
 }
-{page==="saveAndShare" && <SaveAndShare/>
+{page==="saveAndShare" && <SaveAndShare setPage={setPage}/>
 }
-{page==="style" && <Style/>
+{page==="style" && <Style setPage={setPage}/>
 }
 {page==="startSelecting" && <StartSelecting setPage={setPage}/>
 // HERE WE ARE EXPORTING PROP TO THE CHILD COMPONENT 

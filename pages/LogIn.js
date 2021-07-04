@@ -1,8 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, Image, Button, TouchableOpacity } from 'react-native';
 
-export default function LogIn({nextpage}) {
+export default function LogIn({nextpage, setPage}) {
 return (
 <>
 <View style={styles.container}>

@@ -3,8 +3,10 @@ import moment from 'moment';
 import React, {useState, useEffect} from 'react';
 import {SafeAreaView, StyleSheet, View, Text, ScrollView, TouchableOpacity} from 'react-native';
 import Menu from './Menu';
+import Explore from './Explore.js';
 import Logoutbutton from './Logoutbutton';
 import App from '../App';
+import { Linking } from 'react-native';
 
 export default function DailyInspiration({setPage})  {
   // ABOVE WE ARE IMPORTING PROP SETPAGE FROM App.JS PARENT
@@ -46,13 +48,18 @@ return (
 <Text style={styles.title}>Daily Inspiration</Text>
 <Text style={styles.textStyle}>{currentDate}</Text>
 </View>
-
 </View>
 
 <ScrollView style={styles.scrollsection}>
 
+<Text style={styles.link}
+      onPress={() => Linking.openURL('http://google.com')}>
+  Google
+</Text>
+
 <View style={styles.bordercards}><Text style={styles.clothingcat}>Clothing Card</Text><TouchableOpacity onPress={()=>{alert("link")}}>
-<Text style={styles.link}>Link 2</Text>
+<Text style={styles.link} onPress={() => Linking.openURL('http://google.com')}>Explore</Text>
+<Explore setPage={setPage}/>
 </TouchableOpacity></View>
 
 <View style={styles.bordercards}><Text style={styles.clothingcat}>Clothing Card</Text><TouchableOpacity onPress={()=>{alert("link")}}>
@@ -99,7 +106,20 @@ marginBottom:15,
 width: 350,
 },
 
+intro: {
+  justifyContent: 'center',
+  alignItems: 'center',
+  },
 
+title: {
+  fontSize: 30,
+  fontWeight:'300',
+  },
+
+
+scrollsection: {
+  flex: 0.75,
+},
 
 bordercards: {
 borderRadius:15,
@@ -113,27 +133,17 @@ alignItems: 'center',
 justifyContent: 'center',
 },
 
-scrollsection: {
-flex: 0.75,
-
-},
-title: {
-fontSize: 30,
-fontWeight:'300',
-},
-intro: {
-justifyContent: 'center',
-alignItems: 'center',
-},
 
 clothingcat: {
   fontSize: 30,
   fontWeight:'300',
   },
+
   link: {
     fontSize: 15,
     fontWeight:'300',
     color:"black",
     textDecorationLine: 'underline',
     },
+
 });
