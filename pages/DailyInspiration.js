@@ -3,6 +3,7 @@ import moment from 'moment';
 import React, {useState, useEffect} from 'react';
 import {SafeAreaView, StyleSheet, View, Text, ScrollView, TouchableOpacity} from 'react-native';
 import Menu from './Menu';
+import MenuClothes from './MenuClothes';
 import Explore from './Explore.js';
 import Logoutbutton from './Logoutbutton';
 import App from '../App';
@@ -10,6 +11,25 @@ import { Linking } from 'react-native';
 
 export default function DailyInspiration({setPage})  {
   // ABOVE WE ARE IMPORTING PROP SETPAGE FROM App.JS PARENT
+  const [category1, setCategory1] = useState('blouses');
+  const [category2, setCategory2] = useState('pants');
+  const [category3, setCategory3] = useState('shoes');
+
+  const [currentDate, setCurrentDate] = useState('');
+
+  useEffect(() => {
+  var date = new Date().getDate(); //Current Date
+  var month = new Date().getMonth() + 1; //Current Month
+  var year = new Date().getFullYear(); //Current Year
+  var hours = new Date().getHours(); //Current Hours
+  var min = new Date().getMinutes(); //Current Minutes
+  var sec = new Date().getSeconds(); //Current Seconds
+  
+  setCurrentDate(
+  date + '/' + month + '/' + year 
+  + ' ' + hours + ':' + min + ':' + sec
+  );
+  }, []);
 
 var date = new Date().getDate(); //To get the Current Date
 var month = new Date().getMonth() + 1; //To get the Current Month
@@ -22,20 +42,9 @@ var date = moment()
 .utcOffset('+05:30')
 .format('YYYY-MM-DD hh:mm:ss a');
 
-const [currentDate, setCurrentDate] = useState('');
-useEffect(() => {
-var date = new Date().getDate(); //Current Date
-var month = new Date().getMonth() + 1; //Current Month
-var year = new Date().getFullYear(); //Current Year
-var hours = new Date().getHours(); //Current Hours
-var min = new Date().getMinutes(); //Current Minutes
-var sec = new Date().getSeconds(); //Current Seconds
 
-setCurrentDate(
-date + '/' + month + '/' + year 
-+ ' ' + hours + ':' + min + ':' + sec
-);
-}, []);
+
+
 
 return (
 <>
@@ -52,25 +61,17 @@ return (
 
 <ScrollView style={styles.scrollsection}>
 
-<View style={styles.bordercards}><Text style={styles.clothingcat}>Clothing Card</Text><TouchableOpacity onPress={()=>{alert("link")}}>
-<Text style={styles.link}>Link 2</Text>
-</TouchableOpacity></View>
+<View style={styles.bordercards}><MenuClothes setCategory={setCategory1} section={"top"}/>
+<View><Text>{category1}</Text></View>
+</View>
 
-<View style={styles.bordercards}><Text style={styles.clothingcat}>Clothing Card</Text><TouchableOpacity onPress={()=>{alert("link")}}>
-<Text style={styles.link}>Link 2</Text>
-</TouchableOpacity></View>
+<View style={styles.bordercards}><MenuClothes setCategory={setCategory2} section={"middle"}/>
+<View><Text>{category2}</Text></View>
+</View>
 
-<View style={styles.bordercards}><Text style={styles.clothingcat}>Clothing Card</Text><TouchableOpacity onPress={()=>{alert("link")}}>
-<Text style={styles.link}>Link 2</Text>
-</TouchableOpacity></View>
-
-<View style={styles.bordercards}><Text style={styles.clothingcat}>Clothing Card</Text><TouchableOpacity onPress={()=>{alert("link")}}>
-<Text style={styles.link}>Link 2</Text>
-</TouchableOpacity></View>
-
-<View style={styles.bordercards}><Text style={styles.clothingcat}>Clothing Card</Text><TouchableOpacity onPress={()=>{alert("link")}}>
-<Text style={styles.link}>Link 2</Text>
-</TouchableOpacity></View>
+<View style={styles.bordercards}><MenuClothes setCategory={setCategory3} section={"bottom"}/>
+<View><Text>{category3}</Text></View>
+</View>
 
 </ScrollView>
 
