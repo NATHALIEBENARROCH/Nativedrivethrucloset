@@ -62,15 +62,15 @@ return (
 <ScrollView style={styles.scrollsection}>
 
 <View style={styles.bordercards}><MenuClothes setCategory={setCategory1} section={"top"}/>
-<View><Text>{category1}</Text></View>
+<View style={styles.cardTitle}><Text style={styles.cardTitleText}>{category1}</Text></View>
 </View>
 
 <View style={styles.bordercards}><MenuClothes setCategory={setCategory2} section={"middle"}/>
-<View><Text>{category2}</Text></View>
+<View style={styles.cardTitle}><Text style={styles.cardTitleText}>{category2}</Text></View>
 </View>
 
 <View style={styles.bordercards}><MenuClothes setCategory={setCategory3} section={"bottom"}/>
-<View><Text>{category3}</Text></View>
+<View style={styles.cardTitle}><Text style={styles.cardTitleText}>{category3}</Text></View>
 </View>
 
 </ScrollView>
@@ -136,5 +136,22 @@ clothingcat: {
     color:"black",
     textDecorationLine: 'underline',
     },
+
+    cardTitle: {
+      position: 'absolute',
+      top:20,
+      backgroundColor:'black',
+      borderRadius: 15,
+      paddingRight: 10,
+      paddingLeft: 10,
+    },
+
+    cardTitleText: {
+      fontSize: 15,
+      fontWeight:'300',
+      color:"white",
+
+    }
+
 
 });

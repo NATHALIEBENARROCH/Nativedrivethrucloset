@@ -46,6 +46,17 @@ const styles = StyleSheet.create({
     width: 260,
     height: 60,
     borderRadius: 15,
+    borderWidth:4,
+    borderColor:'white',
+    shadowColor: "#fff",
+shadowOffset: {
+width: 10,
+height: 2,
+},
+shadowOpacity: 0.25,
+shadowRadius: 4.84,
+
+elevation: 5,
   },
 
   menuitems: {
