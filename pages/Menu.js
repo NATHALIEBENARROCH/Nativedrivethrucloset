@@ -10,16 +10,10 @@ export default function Menu({setPage}) {
 <TouchableOpacity onPress={()=>{setPage("dailyInspiration")}} style={styles.Logoutbtn}>
 <Image
 style={styles.menuitems}
-source={require('../assets/bar/HOME.png')}
-/>
-</TouchableOpacity>
-
-<TouchableOpacity onPress={()=>{setPage("startSelecting")}} style={styles.Logoutbtn}>
-<Image
-style={styles.menuitems}
 source={require('../assets/bar/LOGO.png')}
 />
 </TouchableOpacity>
+
 
 <TouchableOpacity onPress={()=>{setPage("camera")}} style={styles.Logoutbtn}>
 <Image
@@ -28,12 +22,7 @@ source={require('../assets/bar/PLUS.png')}
 />
 </TouchableOpacity>
 
-<TouchableOpacity onPress={()=>{setPage("style")}} style={styles.Logoutbtn}>
-<Image
-style={styles.menuitems}
-source={require('../assets/bar/WAND.png')}
-/>
-</TouchableOpacity>
+
 
 <TouchableOpacity onPress={()=>{setPage("saveAndShare")}} style={styles.Logoutbtn}>
 <Image
@@ -54,7 +43,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     position: 'absolute',
     bottom:20,
-    width: 380,
+    width: 260,
     height: 60,
     borderRadius: 15,
   },
