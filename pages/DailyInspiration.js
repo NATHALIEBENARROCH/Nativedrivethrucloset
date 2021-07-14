@@ -52,16 +52,6 @@ return (
 
 <ScrollView style={styles.scrollsection}>
 
-<Text style={styles.link}
-      onPress={() => Linking.openURL('http://google.com')}>
-  Google
-</Text>
-
-<View style={styles.bordercards}><Text style={styles.clothingcat}>Clothing Card</Text><TouchableOpacity onPress={()=>{alert("link")}}>
-<Text style={styles.link} onPress={() => Linking.openURL('http://google.com')}>Explore</Text>
-<Explore setPage={setPage}/>
-</TouchableOpacity></View>
-
 <View style={styles.bordercards}><Text style={styles.clothingcat}>Clothing Card</Text><TouchableOpacity onPress={()=>{alert("link")}}>
 <Text style={styles.link}>Link 2</Text>
 </TouchableOpacity></View>
@@ -101,8 +91,8 @@ justifyContent: 'center',
 },
 
 header: {
-flex: 0.25,
-marginBottom:15,
+flex: 0.15,
+marginBottom:10,
 width: 350,
 },
 
@@ -118,7 +108,7 @@ title: {
 
 
 scrollsection: {
-  flex: 0.75,
+  flex: 0.15,
 },
 
 bordercards: {
