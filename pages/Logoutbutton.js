@@ -31,7 +31,8 @@ const styles = StyleSheet.create({
     },
     
     Logoutbtn: {
-    backgroundColor: 'black',
+    backgroundColor: 'red',
+    // WHERE IS RED
     borderRadius: 50,
     width: 45,
     height: 45,

@@ -89,7 +89,6 @@ export default function MenuClothes({setCategory, section }) {
 </TouchableOpacity>
 }
 
-
 </View>
   );
 }

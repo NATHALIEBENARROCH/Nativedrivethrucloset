@@ -3,8 +3,6 @@ import moment from 'moment';
 import React, {useState, useEffect} from 'react';
 import {SafeAreaView, StyleSheet, View, Text, ScrollView, TouchableOpacity} from 'react-native';
 import Menu from './Menu';
-import MenuClothes from './MenuClothes';
-import Explore from './Explore.js';
 import Logoutbutton from './Logoutbutton';
 import App from '../App';
 import { Linking } from 'react-native';
