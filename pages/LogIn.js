@@ -1,8 +1,24 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, Image, Button, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, Image, Button, TouchableOpacity, Alert } from 'react-native';
 
 export default function LogIn({nextpage, setPage}) {
+
+
+let test=async() => {
+  let response = await fetch("http://192.168.2.33:4000", {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'applicatio/json',
+      'Accept': 'applicatio/json',
+    }
+  }
+  )
+  let body = await response.text();
+  alert(body)
+
+  }
+
 return (
 <>
 <View style={styles.container}>
@@ -14,15 +30,21 @@ source={require('../assets/LOGOGV.png')}
 <Text style={styles.slogan}>Let's go for a Fashionable Spin</Text>
 <View>
 <TouchableOpacity onPress={()=>{nextpage()}} style ={styles.TouchableOpacity}>
-
 <Text style={styles.login}>Login</Text>
-
 </TouchableOpacity>
+
 <TouchableOpacity style={styles.TouchableOpacity2}>
 <Text style={styles.signup}>Create an account</Text>
 </TouchableOpacity>
+
+
+<TouchableOpacity onPress={()=>{test()}} style={styles.TouchableOpacity2}>
+<Text style={styles.signup}>Call back end</Text>
+</TouchableOpacity>
+
 </View>
 </View>
+
 
 
 </>
