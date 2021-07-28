@@ -9,8 +9,8 @@ let test=async() => {
   let response = await fetch("http://192.168.2.33:4000", {
     method: 'GET',
     headers: {
-      'Content-Type': 'applicatio/json',
-      'Accept': 'applicatio/json',
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
     }
   }
   )
@@ -18,6 +18,22 @@ let test=async() => {
   alert(body)
 
   }
+
+  let testpost=async() => {
+    let response = await fetch("http://192.168.2.33:4000/post/", {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+       
+      },
+      body:JSON.stringify({test:"test"})
+    }
+    )
+    let body = await response.text();
+    alert(body)
+  
+    }
 
 return (
 <>
@@ -39,6 +55,10 @@ source={require('../assets/LOGOGV.png')}
 
 
 <TouchableOpacity onPress={()=>{test()}} style={styles.TouchableOpacity2}>
+<Text style={styles.signup}>Call back end</Text>
+</TouchableOpacity>
+
+<TouchableOpacity onPress={()=>{testpost()}} style={styles.TouchableOpacity2}>
 <Text style={styles.signup}>Call back end</Text>
 </TouchableOpacity>
 
