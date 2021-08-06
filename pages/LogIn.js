@@ -20,16 +20,20 @@ let test=async() => {
   }
 
   let testpost=async() => {
-    let response = await fetch("http://192.168.2.33:4000/post/", {
-      method: 'POST',
+    let response = await fetch('http://192.168.2.33:4000/post/', {
+      method: 'post',
+      mode: 'no-cors',
       headers: {
-        Accept: 'application/json',
+        'Accept': 'application/json',
         'Content-Type': 'application/json',
        
       },
-      body:JSON.stringify({test:"test"})
+      body: JSON.stringify(
+      {test:'testing123'}
+      )
     }
-    )
+    );
+ 
     let body = await response.text();
     alert(body)
   
