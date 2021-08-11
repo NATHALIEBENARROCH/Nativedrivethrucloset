@@ -12,7 +12,9 @@ let postSignUp= async()=> {
 if (password === '' || name === '') {
   return
 }
-
+if (password !== password) {
+  return
+}
     let response = await fetch('http://192.168.2.33:4000/signUp/', {
       method: 'post',
       mode: 'no-cors',
