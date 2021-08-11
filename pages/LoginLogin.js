@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, Image, Button, TouchableOpacity, Alert } from 'react-native';
 
-export default function LogIn({setPage}) {
+export default function LoginLogin({setPage}) {
 
 // test get call
 // let test=async() => {
@@ -47,10 +47,11 @@ return (
 style={styles.tinyLogo}
 source={require('../assets/LOGOGV.png')}
 />
-<Text style={styles.slogan}>Let's go for a Fashionable Spin</Text>
+<Text style={styles.slogan}>LoginLogin</Text>
 <View>
 
-<TouchableOpacity onPress={()=>{setPage("loginLogin")}} style ={styles.TouchableOpacity}>
+
+<TouchableOpacity onPress={()=>{setPage("daily")}} style ={styles.TouchableOpacity}>
 <Text style={styles.login}>Login</Text>
 </TouchableOpacity>
 

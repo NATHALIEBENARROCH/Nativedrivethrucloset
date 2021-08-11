@@ -2,9 +2,12 @@ import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import LogIn from './pages/LogIn';
+import LoginLogin from './pages/LoginLogin';
+import SignUp from './pages/SignUp';
 import Camera from './pages/Camera';
 import DailyInspiration from './pages/DailyInspiration';
 import SaveAndShare from './pages/SaveAndShare';
+
 
 
 export default function App() {
@@ -12,7 +15,12 @@ export default function App() {
 
   return (
     <>
-{page==="logIn" && <LogIn nextpage={()=>{setPage("dailyInspiration")}}/>
+{page==="logIn" && <LogIn setPage={setPage}/>
+}
+{/* quand le state page est login donc je prop setpage qui me change la page */}
+{page==="loginLogin" && <LoginLogin setPage={setPage}/>
+}
+{page==="signUp" && <SignUp setPage={setPage}/>
 }
 {page==="camera" && <Camera setPage={setPage}/>
 }
