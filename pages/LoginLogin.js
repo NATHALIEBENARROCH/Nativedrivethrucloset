@@ -7,6 +7,36 @@ export default function LoginLogin({setPage}) {
   const [name, setName] = useState("")
   const [password, setPassword] = useState("")
 
+  let postLogIn= async()=> {
+    if (password === '' || name === '') {
+      return
+    }
+    if (password !== password) {
+      return
+    }
+        let response = await fetch('http://192.168.2.33:4000/logIn/', {
+          method: 'post',
+          mode: 'no-cors',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+           
+          },
+          body: JSON.stringify(
+          {name: name, password:password}
+          )
+        }
+        );
+     
+        let body = await response.text();
+        body = JSON.parse(body);
+        
+       if(body.success){
+         setPage("dailyInspiration")
+       }
+      
+    }
+
 
 return (
 <>
@@ -34,7 +64,7 @@ onChangeText={text => setPassword(text)}
 </View>
 
 <View style={styles.inputcontainer2}>
-<TouchableOpacity onPress={()=>{setPage("dailyInspiration")}} style ={styles.TouchableOpacity}>
+<TouchableOpacity onPress={()=>{postLogIn()}} style ={styles.TouchableOpacity}>
 <Text style={styles.login}>Login</Text>
 </TouchableOpacity>
 

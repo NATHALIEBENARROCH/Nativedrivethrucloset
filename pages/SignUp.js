@@ -30,7 +30,12 @@ if (password !== password) {
     );
  
     let body = await response.text();
-    alert(body)
+body = JSON.parse(body);
+
+    if(body.success){
+      setPage("dailyInspiration")
+
+    }
   
 }
 
