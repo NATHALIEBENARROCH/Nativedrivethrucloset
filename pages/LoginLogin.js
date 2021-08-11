@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, Image, Button, TouchableOpacity, Alert } from 'react-native';
+import { StyleSheet, Text, View, Image, Button, TouchableOpacity, Alert, TextInput } from 'react-native';
 
 export default function LoginLogin({setPage}) {
 
@@ -47,10 +47,24 @@ return (
 style={styles.tinyLogo}
 source={require('../assets/LOGOGV.png')}
 />
-<Text style={styles.slogan}>LoginLogin</Text>
-<View>
 
 
+<View style={styles.inputcontainer}>
+<Text style={styles.signup}>Name</Text>
+<TextInput
+      style={styles.nameinput}
+      onChangeText={text => onChangeText(text)}
+     
+    />
+<Text style={styles.signup}>Password</Text>
+<TextInput
+secureTextEntry={true}
+      style={styles.passwordinput}
+      onChangeText={text => onChangeText(text)}
+    />
+</View>
+
+<View style={styles.inputcontainer2}>
 <TouchableOpacity onPress={()=>{setPage("daily")}} style ={styles.TouchableOpacity}>
 <Text style={styles.login}>Login</Text>
 </TouchableOpacity>
@@ -59,12 +73,11 @@ source={require('../assets/LOGOGV.png')}
 <Text style={styles.signup}>Sign up</Text>
 </TouchableOpacity>
 
-
-</View>
-
 </View>
 
 
+
+</View>
 
 </>
 );
@@ -75,6 +88,8 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    borderColor: 'blue',
+    borderWidth:5
   },
   tinyLogo: {
     alignItems: 'center',
@@ -87,10 +102,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+
   TouchableOpacity: {
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop:150,
+    marginTop:20,
     backgroundColor: 'black',
     padding:10,
     width:200,
@@ -111,5 +127,41 @@ const styles = StyleSheet.create({
     signup: {
       color: 'black',
       textDecorationLine: 'underline',
+    },
+
+    signup: {
+      color: 'black',
+      textDecorationLine: 'underline',
+    },
+
+    inputcontainer: {
+      marginTop: 60,
+      alignItems: 'center',
+      justifyContent: 'center'
+    },
+
+    nameinput: { height: 40, 
+      borderColor: 'black', 
+      borderWidth: 1,
+      width: 200,
+borderRadius:5,
+margin:10,
+paddingRight:10,
+paddingLeft:10,
+
+     },
+
+     passwordinput: { height: 40, 
+      borderColor: 'black', 
+      borderWidth: 1,
+      width: 200, 
+borderRadius:5,
+margin:10,
+paddingRight:10,
+paddingLeft:10,
+textAlign: 'center'
+     },
+
+     inputcontainer2: {
     },
 });
