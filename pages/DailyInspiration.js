@@ -6,6 +6,7 @@ import {
   StyleSheet,
   View,
   Text,
+  Image,
   ScrollView,
   TouchableOpacity,
 } from "react-native";
@@ -20,7 +21,23 @@ export default function DailyInspiration({ setPage, clothes }) {
   const [category1, setCategory1] = useState("blouses");
   const [category2, setCategory2] = useState("pants");
   const [category3, setCategory3] = useState("shoes");
-
+  const [categoryPages, setCategoryPages] = useState({
+    coats: 0,
+    jackets: 0,
+    cardigans: 0,
+    sweaters: 0,
+    blouses: 0,
+    tshirts: 0,
+    dresses: 0,
+    jumpsuits: 0,
+    pants: 0,
+    skirts: 0,
+    shorts: 0,
+    bags: 0,
+    shoes: 0,
+    accessories: 0,
+  });
+  const [renderClothesTop, setRenderClothesTop] = useState([]);
   const [currentDate, setCurrentDate] = useState("");
 
   useEffect(() => {
@@ -45,6 +62,18 @@ export default function DailyInspiration({ setPage, clothes }) {
 
   var date = moment().utcOffset("+05:30").format("YYYY-MM-DD hh:mm:ss a");
 
+  useEffect(() => {
+    let value = [];
+    // alert(clothes.length);
+    clothes.forEach((clothing) => {
+      // alert(clothing.url);
+      value.push(
+        <Image style={styles.picture} source={{ uri: clothing.url }} />
+      );
+    });
+    setRenderClothesTop(value);
+  }, [clothes]);
+
   return (
     <>
       <View style={styles.container}>
@@ -59,6 +88,7 @@ export default function DailyInspiration({ setPage, clothes }) {
 
         <ScrollView style={styles.scrollsection}>
           <View style={styles.bordercards}>
+            {renderClothesTop}
             <MenuClothes setCategory={setCategory1} section={"top"} />
             <View style={styles.cardTitle}>
               <Text style={styles.cardTitleText}>{category1}</Text>
@@ -141,7 +171,7 @@ const styles = StyleSheet.create({
 
   cardTitle: {
     position: "absolute",
-    top: 20,
+    top: -13,
     backgroundColor: "black",
     borderRadius: 15,
     paddingRight: 10,
@@ -152,5 +182,12 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: "300",
     color: "white",
+  },
+  picture: {
+    alignItems: "center",
+    justifyContent: "center",
+    width: 250,
+    height: 250,
+    resizeMode: "contain",
   },
 });

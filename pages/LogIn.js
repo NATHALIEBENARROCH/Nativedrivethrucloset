@@ -46,12 +46,12 @@ export default function LogIn({ setPage }) {
 
   //   }
 
-  //   <Image
-  //   style={styles.picture}
-  //   source={{
-  //     uri: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADMAAAAzCAYAAAA6oTAqAAAAEXRFWHRTb2Z0d2FyZQBwbmdjcnVzaEB1SfMAAABQSURBVGje7dSxCQBACARB+2/ab8BEeQNhFi6WSYzYLYudDQYGBgYGBgYGBgYGBgYGBgZmcvDqYGBgmhivGQYGBgYGBgYGBgYGBgYGBgbmQw+P/eMrC5UTVAAAAABJRU5ErkJggg==",
-  //   }}
-  // />
+  <Image
+    style={styles.picture}
+    source={{
+      uri: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADMAAAAzCAYAAAA6oTAqAAAAEXRFWHRTb2Z0d2FyZQBwbmdjcnVzaEB1SfMAAABQSURBVGje7dSxCQBACARB+2/ab8BEeQNhFi6WSYzYLYudDQYGBgYGBgYGBgYGBgYGBgZmcvDqYGBgmhivGQYGBgYGBgYGBgYGBgYGBgbmQw+P/eMrC5UTVAAAAABJRU5ErkJggg==",
+    }}
+  />;
 
   let test = async () => {
     let response = await fetch(
@@ -65,7 +65,6 @@ export default function LogIn({ setPage }) {
       }
     );
     let body = await response.text();
-    alert(body);
   };
 
   return (
