@@ -131,7 +131,13 @@ export default function DailyInspiration({ setPage, clothes }) {
 
         <ScrollView style={styles.scrollsection}>
           <View style={styles.bordercards}>
-            <ScrollView horizontal={true}>{renderClothesTop}</ScrollView>
+            <ScrollView
+              snapToInterval={400}
+              decelerationRate={0.85}
+              horizontal={true}
+            >
+              {renderClothesTop}
+            </ScrollView>
             <MenuClothes setCategory={setCategory1} section={"top"} />
             <View style={styles.cardTitle}>
               <Text style={styles.cardTitleText}>{category1}</Text>
