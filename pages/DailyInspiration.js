@@ -38,6 +38,8 @@ export default function DailyInspiration({ setPage, clothes }) {
     accessories: 0,
   });
   const [renderClothesTop, setRenderClothesTop] = useState([]);
+  const [renderClothesMiddle, setRenderClothesMiddle] = useState([]);
+  const [renderClothesBottom, setRenderClothesBottom] = useState([]);
   const [currentDate, setCurrentDate] = useState("");
 
   useEffect(() => {
@@ -63,16 +65,57 @@ export default function DailyInspiration({ setPage, clothes }) {
   var date = moment().utcOffset("+05:30").format("YYYY-MM-DD hh:mm:ss a");
 
   useEffect(() => {
-    let value = [];
+    let valueTop = [];
+    let valueMiddle = [];
+    let valueBottom = [];
     // alert(clothes.length);
     clothes.forEach((clothing) => {
+      if (clothing.category === category1) {
+        valueTop.push(
+          <Image style={styles.picture} source={{ uri: clothing.url }} />
+        );
+      } else if (clothing.category === category2) {
+        valueMiddle.push(
+          <Image style={styles.picture} source={{ uri: clothing.url }} />
+        );
+      }
+      if (clothing.category === category3) {
+        valueBottom.push(
+          <Image style={styles.picture} source={{ uri: clothing.url }} />
+        );
+      }
       // alert(clothing.url);
-      value.push(
-        <Image style={styles.picture} source={{ uri: clothing.url }} />
-      );
     });
-    setRenderClothesTop(value);
-  }, [clothes]);
+    if (valueTop.length === 0) {
+      valueTop.push(
+        <Image
+          style={styles.picture}
+          source={require("../assets/NothingYet.jpg")}
+        />
+      );
+    }
+
+    if (valueMiddle.length === 0) {
+      valueMiddle.push(
+        <Image
+          style={styles.picture}
+          source={require("../assets/NothingYet.jpg")}
+        />
+      );
+    }
+
+    if (valueBottom.length === 0) {
+      valueBottom.push(
+        <Image
+          style={styles.picture}
+          source={require("../assets/NothingYet.jpg")}
+        />
+      );
+    }
+    setRenderClothesTop(valueTop);
+    setRenderClothesMiddle(valueMiddle);
+    setRenderClothesBottom(valueBottom);
+  }, [clothes, category1, category2, category3]);
 
   return (
     <>
@@ -88,7 +131,7 @@ export default function DailyInspiration({ setPage, clothes }) {
 
         <ScrollView style={styles.scrollsection}>
           <View style={styles.bordercards}>
-            {renderClothesTop}
+            <ScrollView horizontal={true}>{renderClothesTop}</ScrollView>
             <MenuClothes setCategory={setCategory1} section={"top"} />
             <View style={styles.cardTitle}>
               <Text style={styles.cardTitleText}>{category1}</Text>
@@ -96,6 +139,7 @@ export default function DailyInspiration({ setPage, clothes }) {
           </View>
 
           <View style={styles.bordercards}>
+            <ScrollView horizontal={true}>{renderClothesMiddle}</ScrollView>
             <MenuClothes setCategory={setCategory2} section={"middle"} />
             <View style={styles.cardTitle}>
               <Text style={styles.cardTitleText}>{category2}</Text>
@@ -103,6 +147,7 @@ export default function DailyInspiration({ setPage, clothes }) {
           </View>
 
           <View style={styles.bordercards}>
+            <ScrollView horizontal={true}>{renderClothesBottom}</ScrollView>
             <MenuClothes setCategory={setCategory3} section={"bottom"} />
             <View style={styles.cardTitle}>
               <Text style={styles.cardTitleText}>{category3}</Text>
@@ -186,8 +231,12 @@ const styles = StyleSheet.create({
   picture: {
     alignItems: "center",
     justifyContent: "center",
-    width: 250,
-    height: 250,
+    width: 400,
+    height: 400,
     resizeMode: "contain",
+    borderWidth: 4,
+    borderColor: "black",
+    borderStyle: "solid",
+    padding: 20,
   },
 });
