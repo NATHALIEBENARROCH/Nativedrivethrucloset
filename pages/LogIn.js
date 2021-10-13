@@ -93,15 +93,6 @@ export default function LogIn({ setPage }) {
           >
             <Text style={styles.signup}>Sign up</Text>
           </TouchableOpacity>
-
-          <TouchableOpacity
-            onPress={() => {
-              test();
-            }}
-            style={styles.TouchableOpacity2}
-          >
-            <Text style={styles.signup}>Test</Text>
-          </TouchableOpacity>
         </View>
       </View>
     </>
