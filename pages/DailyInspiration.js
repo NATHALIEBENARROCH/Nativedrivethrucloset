@@ -26,6 +26,7 @@ export default function DailyInspiration({ setPage, clothes }) {
   const [categoryPages, setCategoryPages] = useState({
     coats: 0,
     jackets: 0,
+    blazers: 0,
     cardigans: 0,
     sweaters: 0,
     blouses: 0,
@@ -249,6 +250,8 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     paddingRight: 10,
     paddingLeft: 10,
+    paddingTop: 10,
+    paddingBottom: 10,
   },
 
   cardTitleText: {
