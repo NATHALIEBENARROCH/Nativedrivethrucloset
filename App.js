@@ -17,6 +17,7 @@ export default function App() {
     <>
       {page === "logIn" && <LogIn setPage={setPage} />}
       {/* quand le state page est loggin ET le LOGIN PAGE passe le prop setpage qui me change la page */}
+      {/* ces pages ont des && pour stipuler la condition sous laquelle ils apparaissent sinon ils apparaissent toujours */}
       {page === "loginLogin" && (
         <LoginLogin
           setPage={setPage}

@@ -11,6 +11,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import Menu from "./Menu";
+import SaveModal from "./SaveModal";
 import Logoutbutton from "./Logoutbutton";
 import MenuClothes from "./MenuClothes";
 import App from "../App";
@@ -21,6 +22,7 @@ export default function DailyInspiration({ setPage, clothes }) {
   const [category1, setCategory1] = useState("blouses");
   const [category2, setCategory2] = useState("pants");
   const [category3, setCategory3] = useState("shoes");
+  const [isSaveModalOpen, setIsSaveModalOpen] = useState(false);
   const [categoryPages, setCategoryPages] = useState({
     coats: 0,
     jackets: 0,
@@ -161,9 +163,28 @@ export default function DailyInspiration({ setPage, clothes }) {
           </View>
         </ScrollView>
 
+        <TouchableOpacity
+          onPress={() => {
+            setIsSaveModalOpen(true);
+          }}
+          style={styles.saveButton}
+        >
+          <Text style={styles.saveButtonTitle}>Align & Save</Text>
+        </TouchableOpacity>
+
         <Menu setPage={setPage} />
         {/* // ABOVE IS PROP OR EXPORT THAT IS PASSED TO MENU COMPONENT */}
+
+        {
+          isSaveModalOpen === true && (
+            <SaveModal setIsSaveModalOpen={setIsSaveModalOpen} />
+          )
+
+          // ABOVE IS PROP OR EXPORT THAT IS INITIATED HERE AND PASSED TO DAILY INSPIRATION CHILD COMPONENT
+        }
       </View>
+
+      {/* quand on appuie sur fonction setIsSaveModalOpen on change l'etat de la variable */}
     </>
   );
 }
@@ -174,6 +195,7 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     alignItems: "center",
     justifyContent: "center",
+    position: "relative",
   },
 
   header: {
@@ -244,5 +266,27 @@ const styles = StyleSheet.create({
     borderColor: "black",
     borderStyle: "solid",
     padding: 20,
+  },
+
+  saveButton: {
+    position: "absolute",
+    right: 0,
+    marginTop: "auto",
+    marginBottom: "auto",
+    backgroundColor: "white",
+    borderRadius: 15,
+    paddingRight: 10,
+    paddingLeft: 10,
+    borderWidth: 4,
+    borderColor: "black",
+    borderStyle: "solid",
+    paddingTop: 10,
+    paddingBottom: 10,
+  },
+
+  saveButtonTitle: {
+    fontSize: 15,
+    fontWeight: "300",
+    color: "black",
   },
 });
