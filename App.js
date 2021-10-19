@@ -29,7 +29,11 @@ export default function App() {
       {page === "camera" && <Camera setPage={setPage} />}
       {
         page === "dailyInspiration" && (
-          <DailyInspiration setPage={setPage} clothes={clothes} />
+          <DailyInspiration
+            setPage={setPage}
+            clothes={clothes}
+            userId={user.id}
+          />
         )
 
         // ABOVE IS PROP OR EXPORT THAT IS INITIATED HERE AND PASSED TO DAILY INSPIRATION CHILD COMPONENT

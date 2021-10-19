@@ -18,29 +18,13 @@ import MenuClothes from "./MenuClothes";
 import App from "../App";
 import { Linking } from "react-native";
 
-export default function DailyInspiration({ setPage, clothes }) {
+export default function DailyInspiration({ setPage, clothes, userId }) {
   // ABOVE WE ARE IMPORTING PROP SETPAGE FROM App.JS PARENT
   const [category1, setCategory1] = useState("blouses");
   const [category2, setCategory2] = useState("pants");
   const [category3, setCategory3] = useState("shoes");
   const [isSaveModalOpen, setIsSaveModalOpen] = useState(false);
-  const [categoryPages, setCategoryPages] = useState({
-    coats: 0,
-    jackets: 0,
-    blazers: 0,
-    cardigans: 0,
-    sweaters: 0,
-    blouses: 0,
-    tshirts: 0,
-    dresses: 0,
-    jumpsuits: 0,
-    pants: 0,
-    skirts: 0,
-    shorts: 0,
-    bags: 0,
-    shoes: 0,
-    accessories: 0,
-  });
+
   const [renderClothesTop, setRenderClothesTop] = useState([]);
   const [renderClothesMiddle, setRenderClothesMiddle] = useState([]);
   const [renderClothesBottom, setRenderClothesBottom] = useState([]);
@@ -125,7 +109,48 @@ export default function DailyInspiration({ setPage, clothes }) {
     setRenderClothesBottom(valueBottom);
   }, [clothes, category1, category2, category3]);
 
-  const saveOutfit = (title) => {};
+  const saveOutfit = (title) => {
+    let outfit = { title: "", userId: "", totalPrice: null, clothes: [] };
+    outfit.title = title;
+    outfit.userId = userId;
+
+    const topClothesCategoryActive = clothes.filter((clothing) => {
+      return clothing.category === category1;
+    });
+    const middleClothesCategoryActive = clothes.filter((clothing) => {
+      return clothing.category === category2;
+    });
+    const bottomClothesCategoryActive = clothes.filter((clothing) => {
+      return clothing.category === category3;
+    });
+    outfit.clothes.push({
+      price: topClothesCategoryActive[indexClothesTop]["price"],
+      url: topClothesCategoryActive[indexClothesTop]["url"],
+      id: topClothesCategoryActive[indexClothesTop]["_id"],
+      brand: topClothesCategoryActive[indexClothesTop]["brand"],
+      category: topClothesCategoryActive[indexClothesTop]["category"],
+    });
+    outfit.clothes.push({
+      price: middleClothesCategoryActive[indexClothesMiddle]["price"],
+      url: middleClothesCategoryActive[indexClothesMiddle]["url"],
+      id: middleClothesCategoryActive[indexClothesMiddle]["_id"],
+      brand: middleClothesCategoryActive[indexClothesMiddle]["brand"],
+      category: middleClothesCategoryActive[indexClothesMiddle]["category"],
+    });
+    outfit.clothes.push({
+      price: bottomClothesCategoryActive[indexClothesBottom]["price"],
+      url: bottomClothesCategoryActive[indexClothesBottom]["url"],
+      id: bottomClothesCategoryActive[indexClothesBottom]["_id"],
+      brand: bottomClothesCategoryActive[indexClothesBottom]["brand"],
+      category: bottomClothesCategoryActive[indexClothesBottom]["category"],
+    });
+    outfit.totalPrice =
+      outfit.clothes[0]["price"] +
+      outfit.clothes[1]["price"] +
+      outfit.clothes[2]["price"];
+    alert(topClothesCategoryActive[0]);
+    // A CONTINUER
+  };
 
   return (
     <>
