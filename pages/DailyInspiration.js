@@ -9,6 +9,7 @@ import {
   Image,
   ScrollView,
   TouchableOpacity,
+  Alert,
 } from "react-native";
 import Menu from "./Menu";
 import SaveModal from "./SaveModal";
@@ -43,8 +44,12 @@ export default function DailyInspiration({ setPage, clothes }) {
   const [renderClothesTop, setRenderClothesTop] = useState([]);
   const [renderClothesMiddle, setRenderClothesMiddle] = useState([]);
   const [renderClothesBottom, setRenderClothesBottom] = useState([]);
-  const [currentDate, setCurrentDate] = useState("");
 
+  const [indexClothesTop, setIndexClothesTop] = useState(0);
+  const [indexClothesMiddle, setIndexClothesMiddle] = useState(0);
+  const [indexClothesBottom, setIndexClothesBottom] = useState(0);
+
+  const [currentDate, setCurrentDate] = useState("");
   useEffect(() => {
     var date = new Date().getDate(); //Current Date
     var month = new Date().getMonth() + 1; //Current Month
@@ -120,6 +125,8 @@ export default function DailyInspiration({ setPage, clothes }) {
     setRenderClothesBottom(valueBottom);
   }, [clothes, category1, category2, category3]);
 
+  const saveOutfit = (title) => {};
+
   return (
     <>
       <View style={styles.container}>
@@ -138,9 +145,13 @@ export default function DailyInspiration({ setPage, clothes }) {
               snapToInterval={400}
               decelerationRate={0.85}
               horizontal={true}
+              onScroll={(event) => {
+                setIndexClothesTop(event.nativeEvent.contentOffset.x / 400);
+              }}
             >
               {renderClothesTop}
             </ScrollView>
+
             <MenuClothes setCategory={setCategory1} section={"top"} />
             <View style={styles.cardTitle}>
               <Text style={styles.cardTitleText}>{category1}</Text>
@@ -148,7 +159,17 @@ export default function DailyInspiration({ setPage, clothes }) {
           </View>
 
           <View style={styles.bordercards}>
-            <ScrollView horizontal={true}>{renderClothesMiddle}</ScrollView>
+            <ScrollView
+              snapToInterval={400}
+              decelerationRate={0.85}
+              horizontal={true}
+              onScroll={(event) => {
+                setIndexClothesMiddle(event.nativeEvent.contentOffset.x / 400);
+              }}
+            >
+              {renderClothesMiddle}
+            </ScrollView>
+
             <MenuClothes setCategory={setCategory2} section={"middle"} />
             <View style={styles.cardTitle}>
               <Text style={styles.cardTitleText}>{category2}</Text>
@@ -156,7 +177,16 @@ export default function DailyInspiration({ setPage, clothes }) {
           </View>
 
           <View style={styles.bordercards}>
-            <ScrollView horizontal={true}>{renderClothesBottom}</ScrollView>
+            <ScrollView
+              snapToInterval={400}
+              decelerationRate={0.85}
+              horizontal={true}
+              onScroll={(event) => {
+                setIndexClothesBottom(event.nativeEvent.contentOffset.x / 400);
+              }}
+            >
+              {renderClothesBottom}
+            </ScrollView>
             <MenuClothes setCategory={setCategory3} section={"bottom"} />
             <View style={styles.cardTitle}>
               <Text style={styles.cardTitleText}>{category3}</Text>
@@ -178,7 +208,10 @@ export default function DailyInspiration({ setPage, clothes }) {
 
         {
           isSaveModalOpen === true && (
-            <SaveModal setIsSaveModalOpen={setIsSaveModalOpen} />
+            <SaveModal
+              saveOutfit={saveOutfit}
+              setIsSaveModalOpen={setIsSaveModalOpen}
+            />
           )
 
           // ABOVE IS PROP OR EXPORT THAT IS INITIATED HERE AND PASSED TO DAILY INSPIRATION CHILD COMPONENT

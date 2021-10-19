@@ -10,8 +10,8 @@ import {
   TextInput,
 } from "react-native";
 
-export default function SaveModal({ setIsSaveModalOpen }) {
-  const [text, onChangeText] = React.useState("");
+export default function SaveModal({ setIsSaveModalOpen, saveOutfit }) {
+  const [title, setTitle] = React.useState("");
   return (
     <>
       <TouchableOpacity
@@ -37,13 +37,21 @@ export default function SaveModal({ setIsSaveModalOpen }) {
           <SafeAreaView>
             <TextInput
               style={styles.input}
-              onChangeText={onChangeText}
-              value={text}
+              onChangeText={setTitle}
+              value={title}
             />
           </SafeAreaView>
 
           <View style={styles.inputContainer}>
-            <TouchableOpacity style={styles.saveButton}>
+            <TouchableOpacity
+              onPress={() => {
+                if (title === "") {
+                  return;
+                }
+                saveOutfit(title);
+              }}
+              style={styles.saveButton}
+            >
               <Text style={styles.saveButtonText}>Save</Text>
             </TouchableOpacity>
           </View>
@@ -64,6 +72,8 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     bottom: 0,
+    elevation: 5,
+    zIndex: 5,
   },
 
   modal: {
@@ -75,6 +85,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     backgroundColor: "white",
     borderRadius: 15,
+    elevation: 5,
+    zIndex: 5,
   },
   x: {
     fontSize: 20,
@@ -94,7 +106,7 @@ const styles = StyleSheet.create({
   input: {
     top: -30,
     height: 40,
-    width: 150,
+    width: 250,
     margin: 12,
     borderWidth: 1,
     borderRadius: 15,
