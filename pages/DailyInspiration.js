@@ -61,19 +61,31 @@ export default function DailyInspiration({ setPage, clothes, userId }) {
     let valueMiddle = [];
     let valueBottom = [];
     // alert(clothes.length);
-    clothes.forEach((clothing) => {
+    clothes.forEach((clothing, index) => {
       if (clothing.category === category1) {
         valueTop.push(
-          <Image style={styles.picture} source={{ uri: clothing.url }} />
+          <Image
+            style={styles.picture}
+            source={{ uri: clothing.url }}
+            key={index}
+          />
         );
       } else if (clothing.category === category2) {
         valueMiddle.push(
-          <Image style={styles.picture} source={{ uri: clothing.url }} />
+          <Image
+            style={styles.picture}
+            source={{ uri: clothing.url }}
+            key={index}
+          />
         );
       }
       if (clothing.category === category3) {
         valueBottom.push(
-          <Image style={styles.picture} source={{ uri: clothing.url }} />
+          <Image
+            style={styles.picture}
+            source={{ uri: clothing.url }}
+            key={index}
+          />
         );
       }
       // alert(clothing.url);
@@ -113,7 +125,6 @@ export default function DailyInspiration({ setPage, clothes, userId }) {
     let outfit = { title: "", userId: "", totalPrice: null, clothes: [] };
     outfit.title = title;
     outfit.userId = userId;
-
     const topClothesCategoryActive = clothes.filter((clothing) => {
       return clothing.category === category1;
     });
@@ -123,6 +134,17 @@ export default function DailyInspiration({ setPage, clothes, userId }) {
     const bottomClothesCategoryActive = clothes.filter((clothing) => {
       return clothing.category === category3;
     });
+
+    if (
+      topClothesCategoryActive.length === 0 ||
+      middleClothesCategoryActive.length === 0 ||
+      bottomClothesCategoryActive.length === 0
+    ) {
+      setIsSaveModalOpen(false);
+      Alert.alert("Oops!", "Please pick 3 items");
+      return;
+    }
+
     outfit.clothes.push({
       price: topClothesCategoryActive[indexClothesTop]["price"],
       url: topClothesCategoryActive[indexClothesTop]["url"],
@@ -148,8 +170,26 @@ export default function DailyInspiration({ setPage, clothes, userId }) {
       outfit.clothes[0]["price"] +
       outfit.clothes[1]["price"] +
       outfit.clothes[2]["price"];
-    alert(topClothesCategoryActive[0]);
-    // A CONTINUER
+    postOutfit(outfit);
+  };
+
+  // THIS WILL SEND OUTFITS TO BACK END
+  let postOutfit = async (outfit) => {
+    let response = await fetch("http://192.168.2.33:4000/saveOutfit/", {
+      method: "post",
+      mode: "no-cors",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ outfit: outfit }),
+    });
+    let body = await response.text();
+    body = JSON.parse(body);
+    if (body.success) {
+      Alert.alert("Congratulations!", body.message);
+      setIsSaveModalOpen(false);
+    }
   };
 
   return (
