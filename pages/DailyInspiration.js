@@ -20,7 +20,7 @@ import { Linking } from "react-native";
 
 export default function DailyInspiration({ setPage, clothes, userId }) {
   // ABOVE WE ARE IMPORTING PROP SETPAGE FROM App.JS PARENT
-  const [category1, setCategory1] = useState("blouses");
+  const [category1, setCategory1] = useState("shirts");
   const [category2, setCategory2] = useState("pants");
   const [category3, setCategory3] = useState("shoes");
   const [isSaveModalOpen, setIsSaveModalOpen] = useState(false);

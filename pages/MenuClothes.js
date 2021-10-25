@@ -63,11 +63,11 @@ export default function MenuClothes({ setCategory, section }) {
       {section === "top" && (
         <TouchableOpacity
           onPress={() => {
-            setCategory("blouses");
+            setCategory("shirts");
           }}
           style={styles.Logoutbtn}
         >
-          <Text style={styles.category}>Blouses</Text>
+          <Text style={styles.category}>Shirts</Text>
         </TouchableOpacity>
       )}
 
