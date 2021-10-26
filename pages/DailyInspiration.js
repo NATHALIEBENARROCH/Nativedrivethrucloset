@@ -299,8 +299,10 @@ const styles = StyleSheet.create({
 
   header: {
     flex: 0.15,
-    marginBottom: 10,
+    marginBottom: 55,
+    top: 25,
     width: 350,
+    position: "absolute",
   },
 
   intro: {
@@ -315,6 +317,7 @@ const styles = StyleSheet.create({
 
   scrollsection: {
     flex: 0.15,
+    marginTop: 90,
   },
 
   bordercards: {
