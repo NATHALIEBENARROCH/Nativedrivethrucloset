@@ -12,6 +12,7 @@ export default function App() {
   let [page, setPage] = useState("logIn");
   let [user, setUser] = useState({ id: "", name: "" });
   let [clothes, setClothes] = useState([]);
+  let [outfits, setOutfits] = useState([]);
 
   return (
     <>
@@ -23,6 +24,7 @@ export default function App() {
           setPage={setPage}
           setUser={setUser}
           setClothes={setClothes}
+          setOutfits={setOutfits}
         />
       )}
       {page === "signUp" && <SignUp setPage={setPage} />}
@@ -33,13 +35,20 @@ export default function App() {
             setPage={setPage}
             clothes={clothes}
             userId={user.id}
+            setOutfits={setOutfits}
           />
         )
 
         // ABOVE IS PROP OR EXPORT THAT IS INITIATED HERE AND PASSED TO DAILY INSPIRATION CHILD COMPONENT
       }
 
-      {page === "saveAndShare" && <SaveAndShare setPage={setPage} />}
+      {page === "saveAndShare" && (
+        <SaveAndShare
+          setPage={setPage}
+          outfits={outfits}
+          setOutfits={setOutfits}
+        />
+      )}
     </>
   );
 }

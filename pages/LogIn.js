@@ -53,19 +53,19 @@ export default function LogIn({ setPage }) {
     }}
   />;
 
-  let test = async () => {
-    let response = await fetch(
-      "http://192.168.2.33:4000/fetchClothes/61133c2f21063cdb1bcab06a",
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-      }
-    );
-    let body = await response.text();
-  };
+  // let test = async () => {
+  //   let response = await fetch(
+  //     "http://192.168.2.33:4000/fetchClothes/61133c2f21063cdb1bcab06a",
+  //     {
+  //       method: "GET",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //         Accept: "application/json",
+  //       },
+  //     }
+  //   );
+  //   let body = await response.text();
+  // };
 
   return (
     <>

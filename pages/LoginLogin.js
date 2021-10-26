@@ -11,7 +11,12 @@ import {
   TextInput,
 } from "react-native";
 
-export default function LoginLogin({ setPage, setUser, setClothes }) {
+export default function LoginLogin({
+  setPage,
+  setUser,
+  setClothes,
+  setOutfits,
+}) {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
 
@@ -39,6 +44,7 @@ export default function LoginLogin({ setPage, setUser, setClothes }) {
       setPage("dailyInspiration");
       setUser(body.user);
       setClothes(body.clothes);
+      setOutfits(body.outfits);
     }
   };
 
@@ -156,6 +162,7 @@ const styles = StyleSheet.create({
     margin: 10,
     paddingRight: 10,
     paddingLeft: 10,
+    textAlign: "center",
   },
 
   passwordinput: {

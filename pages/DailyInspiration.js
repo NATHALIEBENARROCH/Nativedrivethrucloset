@@ -18,7 +18,12 @@ import MenuClothes from "./MenuClothes";
 import App from "../App";
 import { Linking } from "react-native";
 
-export default function DailyInspiration({ setPage, clothes, userId }) {
+export default function DailyInspiration({
+  setPage,
+  clothes,
+  userId,
+  setOutfits,
+}) {
   // ABOVE WE ARE IMPORTING PROP SETPAGE FROM App.JS PARENT
   const [category1, setCategory1] = useState("shirts");
   const [category2, setCategory2] = useState("pants");
@@ -182,11 +187,12 @@ export default function DailyInspiration({ setPage, clothes, userId }) {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ outfit: outfit }),
+      body: JSON.stringify({ outfit: outfit, userId: userId }),
     });
     let body = await response.text();
     body = JSON.parse(body);
     if (body.success) {
+      setOutfits(body.outfits);
       Alert.alert("Congratulations!", body.message);
       setIsSaveModalOpen(false);
     }

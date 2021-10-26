@@ -12,6 +12,8 @@ import Menu from "./Menu";
 import Logoutbutton from "./Logoutbutton";
 
 export default function SaveAndShare({ setPage }) {
+  const [outfits, setOutfits] = useState([]);
+  useEffect(() => {}, []);
   return (
     <>
       <View style={styles.container}>
