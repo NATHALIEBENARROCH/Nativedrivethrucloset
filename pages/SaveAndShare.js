@@ -70,6 +70,10 @@ export default function SaveAndShare({ setPage, outfits, setOutfits }) {
             decelerationRate={0.95}
             horizontal={true}
             onScroll={(event) => {
+              let val = event.nativeEvent.contentOffset.x / 400;
+              if (!Number.isInteger(val)) {
+                return;
+              }
               setIndexOutfit(event.nativeEvent.contentOffset.x / 400);
             }}
           >
