@@ -1,7 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useState, useEffect } from "react";
 import { Camera } from "expo-camera";
-import { StyleSheet, View, Text, Bouton, Image, Button } from "react-native";
+import { StyleSheet, View, Text, Image, TouchableOpacity } from "react-native";
 import Menu from "./Menu";
 import Logoutbutton from "./Logoutbutton";
 
@@ -47,27 +47,28 @@ export default function CameraPage({ setPage }) {
               style={styles.fixedRatio}
               type={type}
             />
-            <Button
-              title="Flip Camera"
-              onPress={() => {
-                setType(
-                  type === Camera.Constants.Type.back
-                    ? Camera.Constants.Type.front
-                    : Camera.Constants.Type.back
-                );
-              }}
-            />
-            <Button
-              title="Take Picture"
-              onPress={() => takePicture()}
-              onPress={() => {
-                setType(
-                  type === Camera.Constants.Type.back
-                    ? Camera.Constants.Type.front
-                    : Camera.Constants.Type.back
-                );
-              }}
-            />
+
+            <View style={styles.direction}>
+              <TouchableOpacity
+                style={styles.btn}
+                onPress={() => {
+                  setType(
+                    type === Camera.Constants.Type.back
+                      ? Camera.Constants.Type.front
+                      : Camera.Constants.Type.back
+                  );
+                }}
+              >
+                <Text style={styles.saveButtonTitle}>Flip Camera</Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity
+                style={styles.btn}
+                onPress={() => takePicture()}
+              >
+                <Text style={styles.saveButtonTitle}>Take Picture</Text>
+              </TouchableOpacity>
+            </View>
 
             {image && <Image source={{ uri: image }} style={styles.image} />}
           </View>
@@ -109,25 +110,19 @@ const styles = StyleSheet.create({
   cameraContainer: {
     flex: 0.8,
     flexDirection: "column",
-    borderWidth: 4,
-    borderColor: "green",
-    borderStyle: "solid",
     borderRadius: 15,
+    marginTop: -20,
   },
 
   fixedRatio: {
     height: "100%",
     width: "100%",
     borderRadius: 15,
-
     aspectRatio: 1,
   },
 
   image: {
     flex: 1,
-    borderWidth: 4,
-    borderColor: "green",
-    borderStyle: "solid",
   },
   bordercards: {
     borderRadius: 15,
@@ -140,5 +135,28 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     width: "100%",
+  },
+
+  btn: {
+    marginTop: 2,
+    marginBottom: 2,
+    backgroundColor: "white",
+    borderRadius: 15,
+    paddingRight: 10,
+    paddingLeft: 10,
+    borderWidth: 4,
+    borderColor: "black",
+    borderStyle: "solid",
+    paddingTop: 10,
+    paddingBottom: 10,
+  },
+  direction: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+  },
+  saveButtonTitle: {
+    fontSize: 15,
+    fontWeight: "300",
+    color: "black",
   },
 });
