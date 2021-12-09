@@ -5,7 +5,7 @@ import { StyleSheet, View, Text, Bouton, Image, Button } from "react-native";
 import Menu from "./Menu";
 import Logoutbutton from "./Logoutbutton";
 
-export default function Camera({ setPage }) {
+export default function CameraPage({ setPage }) {
   const [hasCameraPermission, setHasCameraPermission] = useState(null);
   const [camera, setCamera] = useState(null);
   const [image, setImage] = useState(null);
@@ -40,13 +40,12 @@ export default function Camera({ setPage }) {
           </View>
         </View>
 
-        <View style={{ flex: 1 }}>
+        <View style={styles.bordercards}>
           <View style={styles.cameraContainer}>
             <Camera
               ref={(ref) => setCamera(ref)}
               style={styles.fixedRatio}
               type={type}
-              ratio={"1:1"}
             />
             <Button
               title="Flip Camera"
@@ -61,7 +60,6 @@ export default function Camera({ setPage }) {
             <Button
               title="Take Picture"
               onPress={() => takePicture()}
-              title="Flip Camera"
               onPress={() => {
                 setType(
                   type === Camera.Constants.Type.back
@@ -109,16 +107,38 @@ const styles = StyleSheet.create({
   },
 
   cameraContainer: {
-    flex: 1,
-    flexDirection: "row",
+    flex: 0.8,
+    flexDirection: "column",
+    borderWidth: 4,
+    borderColor: "green",
+    borderStyle: "solid",
+    borderRadius: 15,
   },
 
   fixedRatio: {
-    flex: 1,
+    height: "100%",
+    width: "100%",
+    borderRadius: 15,
+
     aspectRatio: 1,
   },
 
   image: {
     flex: 1,
+    borderWidth: 4,
+    borderColor: "green",
+    borderStyle: "solid",
+  },
+  bordercards: {
+    borderRadius: 15,
+    marginTop: 25,
+    borderWidth: 4,
+    borderColor: "black",
+    borderStyle: "solid",
+    minHeight: 500,
+    minWidth: 350,
+    alignItems: "center",
+    justifyContent: "center",
+    width: "100%",
   },
 });

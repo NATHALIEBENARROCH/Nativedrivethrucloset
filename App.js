@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from "react-native";
 import LogIn from "./pages/LogIn";
 import LoginLogin from "./pages/LoginLogin";
 import SignUp from "./pages/SignUp";
-import Camera from "./pages/Camera";
+import CameraPage from "./pages/CameraPage";
 import DailyInspiration from "./pages/DailyInspiration";
 import SaveAndShare from "./pages/SaveAndShare";
 
@@ -28,7 +28,7 @@ export default function App() {
         />
       )}
       {page === "signUp" && <SignUp setPage={setPage} />}
-      {page === "camera" && <Camera setPage={setPage} />}
+      {page === "cameraPage" && <CameraPage setPage={setPage} />}
       {
         page === "dailyInspiration" && (
           <DailyInspiration

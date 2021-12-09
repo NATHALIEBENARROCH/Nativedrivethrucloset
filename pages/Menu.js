@@ -19,7 +19,7 @@ export default function Menu({ setPage }) {
 
       <TouchableOpacity
         onPress={() => {
-          setPage("camera");
+          setPage("cameraPage");
         }}
         style={styles.Logoutbtn}
       >
