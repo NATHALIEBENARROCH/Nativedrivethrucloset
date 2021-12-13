@@ -13,14 +13,17 @@ export default function CameraPage({ setPage }) {
 
   useEffect(() => {
     (async () => {
-      const cameraStatus = await Camera.requestCameraPermissionsAsync();
-      setHasCameraPermission(cameraStatus.status === "granted");
+      // Don't request camera permission natively if not available, fixes web
+      if (Camera.requestCameraPermissionsAsync) {
+        const cameraStatus = await Camera.requestCameraPermissionsAsync();
+        setHasCameraPermission(cameraStatus.status === "granted");
+      }
     })();
   }, []);
 
   const takePicture = async () => {
     if (camera) {
-      const data = await camera.takePictureAsync(null);
+      const data = await camera.takePictureAsync();
       setImage(data.uri);
     }
   };
