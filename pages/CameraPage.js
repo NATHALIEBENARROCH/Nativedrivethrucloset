@@ -36,13 +36,11 @@ export default function CameraPage({ setPage }) {
     <>
       <View style={styles.container}>
         <Logoutbutton setPage={setPage} />
-
         <View style={styles.header}>
           <View style={styles.intro}>
             <Text style={styles.title}>Camera</Text>
           </View>
         </View>
-
         <View style={styles.bordercards}>
           <View style={styles.cameraContainer}>
             <Camera
@@ -76,7 +74,7 @@ export default function CameraPage({ setPage }) {
             {image && <Image source={{ uri: image }} style={styles.image} />}
           </View>
         </View>
-
+        ~
         <Menu setPage={setPage} />
         {/* // ABOVE IS PROP OR EXPORT THAT IS PASSED TO MENU COMPONENT */}
       </View>
