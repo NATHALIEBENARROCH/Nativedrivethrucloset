@@ -179,7 +179,7 @@ export default function DailyInspiration({
 
   // THIS WILL SEND OUTFITS TO BACK END
   let postOutfit = async (outfit) => {
-    let response = await fetch("http://192.168.2.33:4000/saveOutfit/", {
+    let response = await fetch("http://192.168.2.23:4000/saveOutfit/", {
       method: "post",
       mode: "no-cors",
       headers: {
