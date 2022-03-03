@@ -15,7 +15,6 @@ import Menu from "./Menu";
 import SaveModal from "./SaveModal";
 import Logoutbutton from "./Logoutbutton";
 import MenuClothes from "./MenuClothes";
-import App from "../App";
 import { Linking } from "react-native";
 
 export default function DailyInspiration({

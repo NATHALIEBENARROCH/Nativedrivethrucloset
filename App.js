@@ -13,7 +13,7 @@ export default function App() {
   let [user, setUser] = useState({ id: "", name: "" });
   let [clothes, setClothes] = useState([]);
   let [outfits, setOutfits] = useState([]);
-
+  // return <CameraPage />;
   return (
     <>
       {page === "logIn" && <LogIn setPage={setPage} />}

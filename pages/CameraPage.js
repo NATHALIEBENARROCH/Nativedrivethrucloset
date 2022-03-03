@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Camera } from "expo-camera";
 import { StyleSheet, View, Text, Image, TouchableOpacity } from "react-native";
 import Menu from "./Menu";
@@ -7,9 +7,11 @@ import Logoutbutton from "./Logoutbutton";
 
 export default function CameraPage({ setPage }) {
   const [hasCameraPermission, setHasCameraPermission] = useState(null);
-  const [camera, setCamera] = useState(null);
+  //changed
+  const camera = useRef(null);
   const [image, setImage] = useState(null);
   const [type, setType] = useState(Camera.Constants.Type.back);
+  const [cameraReady, setCameraReady] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -22,8 +24,9 @@ export default function CameraPage({ setPage }) {
   }, []);
 
   const takePicture = async () => {
-    if (camera) {
-      const data = await camera.takePictureAsync();
+    //added current
+    if (camera.current && cameraReady) {
+      const data = await camera.current.takePictureAsync();
       setImage(data.uri);
     }
   };
@@ -44,7 +47,11 @@ export default function CameraPage({ setPage }) {
         <View style={styles.bordercards}>
           <View style={styles.cameraContainer}>
             <Camera
-              ref={(ref) => setCamera(ref)}
+              //added this
+              onCameraReady={() => {
+                setCameraReady(true);
+              }}
+              ref={camera}
               style={styles.fixedRatio}
               type={type}
             />
@@ -70,11 +77,10 @@ export default function CameraPage({ setPage }) {
                 <Text style={styles.saveButtonTitle}>Take Picture</Text>
               </TouchableOpacity>
             </View>
-
-            {image && <Image source={{ uri: image }} style={styles.image} />}
+            {/* //added this */}
+            {!!image && <Image source={{ uri: image }} style={styles.image} />}
           </View>
         </View>
-        ~
         <Menu setPage={setPage} />
         {/* // ABOVE IS PROP OR EXPORT THAT IS PASSED TO MENU COMPONENT */}
       </View>
