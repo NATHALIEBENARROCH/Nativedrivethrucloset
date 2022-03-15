@@ -1,5 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import moment from "moment";
+import envs from "../config/env";
+
 import React, { useState, useEffect } from "react";
 import {
   SafeAreaView,
@@ -179,7 +181,7 @@ export default function DailyInspiration({
 
   // THIS WILL SEND OUTFITS TO BACK END
   let postOutfit = async (outfit) => {
-    let response = await fetch("http://192.168.2.23:4000/saveOutfit/", {
+    let response = await fetch(envs.SAVEOUTFIT, {
       method: "post",
       mode: "no-cors",
       headers: {
