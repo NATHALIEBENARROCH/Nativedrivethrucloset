@@ -11,61 +11,12 @@ import {
 } from "react-native";
 
 export default function LogIn({ setPage }) {
-  // test get call
-  // let test=async() => {
-  //   let response = await fetch("http://192.168.2.33:4000", {
-  //     method: 'GET',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //       'Accept': 'application/json',
-  //     }
-  //   }
-  //   )
-  //   let body = await response.text();
-  //   alert(body)
-
-  //   }
-  // test post call
-  // let testpost=async() => {
-  //   let response = await fetch('http://192.168.2.33:4000/post/', {
-  //     method: 'post',
-  //     mode: 'no-cors',
-  //     headers: {
-  //       'Accept': 'application/json',
-  //       'Content-Type': 'application/json',
-
-  //     },
-  //     body: JSON.stringify(
-  //     {test:'testing123'}
-  //     )
-  //   }
-  //   );
-
-  //   let body = await response.text();
-  //   alert(body)
-
-  //   }
-
   <Image
     style={styles.picture}
     source={{
       uri: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADMAAAAzCAYAAAA6oTAqAAAAEXRFWHRTb2Z0d2FyZQBwbmdjcnVzaEB1SfMAAABQSURBVGje7dSxCQBACARB+2/ab8BEeQNhFi6WSYzYLYudDQYGBgYGBgYGBgYGBgYGBgZmcvDqYGBgmhivGQYGBgYGBgYGBgYGBgYGBgbmQw+P/eMrC5UTVAAAAABJRU5ErkJggg==",
     }}
   />;
-
-  // let test = async () => {
-  //   let response = await fetch(
-  //     "http://192.168.2.33:4000/fetchClothes/61133c2f21063cdb1bcab06a",
-  //     {
-  //       method: "GET",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //         Accept: "application/json",
-  //       },
-  //     }
-  //   );
-  //   let body = await response.text();
-  // };
 
   return (
     <>

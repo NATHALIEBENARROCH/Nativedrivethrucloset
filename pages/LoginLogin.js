@@ -27,7 +27,7 @@ export default function LoginLogin({
     if (password !== password) {
       return;
     }
-    let response = await fetch("http://192.168.2.23:4000/logIn/", {
+    let response = await fetch("http://172.20.10.2:4000/logIn/", {
       method: "post",
       mode: "no-cors",
       headers: {
