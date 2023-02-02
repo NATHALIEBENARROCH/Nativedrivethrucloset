@@ -23,7 +23,7 @@ export default function LoginLogin({ setPage }) {
     if (password !== password) {
       return;
     }
-    let response = await fetch("http://172.20.10.2:4000/signUp/", {
+    let response = await fetch("http://192.168.2.23:4000/signUp/", {
       method: "post",
       mode: "no-cors",
       headers: {
