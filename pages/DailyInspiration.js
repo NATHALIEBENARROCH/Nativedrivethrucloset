@@ -73,7 +73,7 @@ export default function DailyInspiration({
           <Image
             style={styles.picture}
             source={{ uri: clothing.url }}
-            key={index}
+            key={category1 + index}
           />
         );
       } else if (clothing.category === category2) {
@@ -81,7 +81,7 @@ export default function DailyInspiration({
           <Image
             style={styles.picture}
             source={{ uri: clothing.url }}
-            key={index}
+            key={category2 + index}
           />
         );
       }
@@ -90,7 +90,7 @@ export default function DailyInspiration({
           <Image
             style={styles.picture}
             source={{ uri: clothing.url }}
-            key={index}
+            key={category3 + index}
           />
         );
       }
@@ -101,6 +101,7 @@ export default function DailyInspiration({
         <Image
           style={styles.picture}
           source={require("../assets/NothingYet.jpg")}
+          key={category1 + 'nothing'}
         />
       );
     }
@@ -110,6 +111,7 @@ export default function DailyInspiration({
         <Image
           style={styles.picture}
           source={require("../assets/NothingYet.jpg")}
+          key={category2 + 'nothing'}
         />
       );
     }
@@ -119,6 +121,7 @@ export default function DailyInspiration({
         <Image
           style={styles.picture}
           source={require("../assets/NothingYet.jpg")}
+          key={category3 + 'nothing'}
         />
       );
     }
@@ -375,7 +378,7 @@ const styles = StyleSheet.create({
     resizeMode: "contain",
     borderWidth: 4,
     borderColor: "black",
-    borderStyle: "solid",
+    // borderStyle: "solid",
     padding: 20,
   },
 
