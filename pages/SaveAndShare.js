@@ -8,10 +8,14 @@ import {
   Text,
   ScrollView,
   TouchableOpacity,
+  FlatList,
+  Dimensions,
 } from "react-native";
 import Menu from "./Menu";
 import Logoutbutton from "./Logoutbutton";
+import SaveModal from "./SaveModal";
 
+const width = Dimensions.get('window').width;
 export default function SaveAndShare({ setPage, outfits, setOutfits }) {
   const [renderOutfits, setRenderOutfits] = useState([]);
   const [isShareModalOpen, setIsShareModalOpen] = useState(false);
@@ -53,6 +57,58 @@ export default function SaveAndShare({ setPage, outfits, setOutfits }) {
     });
     setRenderOutfits(value);
   }, [outfits]);
+
+  const saveOutfit = () => {
+    setIsShareModalOpen(false);
+  }
+  const setIsSaveModalOpen = () => {
+    setIsShareModalOpen(false);
+  }
+  const Item = ({item}) => {
+    return (
+      <View style={{
+        alignItems: "center",
+        justifyContent: "center",
+        width,
+      }}>
+        <View style={{
+          borderRadius: 15,
+          marginTop: 25,
+          borderWidth: 4,
+          borderColor: "black",
+          borderStyle: "solid",
+          margin: 10,
+          alignItems: "center",
+          justifyContent: "center",
+          minHeight: 500,
+        }}>
+          <View style={{
+            paddingTop: 50,
+            width: 400,
+            alignItems: "center",
+            justifyContent: "center",
+          }}>
+            <Image
+              style={styles.picture}
+              source={{ uri: item.clothes[0]["url"] }}
+            />
+            <Image
+              style={styles.picture}
+              source={{ uri: item.clothes[1]["url"] }}
+            />
+            <Image
+              style={styles.picture}
+              source={{ uri: item.clothes[2]["url"] }}
+            />
+          </View>
+          <View style={styles.cardTitle}>
+            <Text style={styles.cardTitleText}>{item.title}</Text>
+          </View>
+        </View>
+      </View>
+    )
+  };
+
   return (
     <>
       <View style={styles.container}>
@@ -64,7 +120,27 @@ export default function SaveAndShare({ setPage, outfits, setOutfits }) {
           </View>
         </View>
 
-        <View style={styles.bordercards}>
+        <FlatList
+          data={outfits}
+          renderItem={({item}) => <Item item={item} />}
+          keyExtractor={item => item._id}
+          horizontal
+          snapToInterval={width}
+          decelerationRate={0.95}
+          onScroll={(event) => {
+            let val = event.nativeEvent.contentOffset.x / width;
+            if (!Number.isInteger(val)) {
+              return;
+            }
+            setIndexOutfit(event.nativeEvent.contentOffset.x / width);
+          }}
+          contentContainerStyle={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        />
+        {/* <View style={styles.bordercards}>
           <ScrollView
             snapToInterval={400}
             decelerationRate={0.95}
@@ -81,10 +157,9 @@ export default function SaveAndShare({ setPage, outfits, setOutfits }) {
           </ScrollView>
 
           <View style={styles.cardTitle}>
-            {/* <Text style={styles.cardTitleText}>{category1}</Text> */}
             <Text style={styles.cardTitleText}>{title}</Text>
           </View>
-        </View>
+        </View> */}
 
         <TouchableOpacity
           onPress={() => {
@@ -99,11 +174,11 @@ export default function SaveAndShare({ setPage, outfits, setOutfits }) {
 
         {
           isShareModalOpen === true && (
-            <View>LOL</View>
-            // <SaveModal
-            //   saveOutfit={saveOutfit}
-            //   setIsSaveModalOpen={setIsSaveModalOpen}
-            // />
+            // <Text>LOL</Text>
+            <SaveModal
+              saveOutfit={saveOutfit}
+              setIsSaveModalOpen={setIsSaveModalOpen}
+            />
           )
 
           // ABOVE IS PROP OR EXPORT THAT IS INITIATED HERE AND PASSED TO DAILY INSPIRATION CHILD COMPONENT
